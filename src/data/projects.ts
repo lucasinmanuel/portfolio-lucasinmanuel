@@ -44,7 +44,7 @@ export const projects: Project[] = [
       'Três APIs irmãs sobre a mesma base, servindo white-labels diferentes do mesmo protocolo. O trabalho central não é o CRUD — é manter o banco em dia com um estado externo que muda sozinho, sem derrubar a latência das leituras nem duplicar efeito quando a API roda com várias réplicas.',
     architecture: [
       'AdonisJS 6 e Lucid sobre MySQL, com Redis para cache e BullMQ para o que não pode bloquear a resposta.',
-      'Camada de sincronização lê eventos externos (on-chain) e os aplica ao banco dentro de uma transação.',
+      'Um serviço externo observa a cadeia e faz POST dos eventos; a API valida o payload por tipo, enfileira e responde na hora — o trabalho de banco acontece no worker.',
       'Cada mutação devolve um descritor com o que transmitir aos clientes conectados e o que invalidar — em vez de espalhar chamadas de invalidação pelo código.',
       'Broadcast em tempo real por WebSocket, com um router de canais por assinatura.',
       'Bot Telegram (Telegraf) como canal de alerta operacional; Swagger gerado a partir das rotas.',
@@ -66,9 +66,9 @@ export const projects: Project[] = [
           'Em vez de chaves soltas, cada entidade declara sua configuração de cache: chave derivada, TTL legível, model de origem e mensagem de ausência. A invalidação passa a ser consequência da mutação, não um passo que alguém pode esquecer.',
       },
       {
-        title: 'Sincronização transacional de estado externo',
+        title: 'Ingestão confiável de uma fonte que não é minha',
         detail:
-          'O sync aplica cada lote de eventos dentro de uma transação: ou o banco avança por completo, ou não avança. É o mesmo formato de um sync de catálogo — ler uma fonte que você não controla, reconciliar com o que já está persistido e publicar a diferença.',
+          'O endpoint de sync valida cada tipo de evento com schema estrito, enfileira e responde em milissegundos — nada de banco no caminho da requisição. O worker então aplica o lote inteiro em uma transação: ou o banco avança por completo, ou não avança. É a forma de qualquer sync de catálogo: receber de uma fonte que você não controla, reconciliar com o que já está persistido e publicar a diferença.',
       },
     ],
     stack: [
