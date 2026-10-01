@@ -22,7 +22,7 @@ export function ProjectDetail({
         <div className="relative px-4 pt-6 pb-8 sm:px-10 sm:pt-8 sm:pb-10">
           <button
             onClick={onBack}
-            className="mb-7 inline-flex items-center gap-2 rounded-lg border border-line bg-void/50 px-3 py-1.5 text-[13px] text-muted backdrop-blur transition-colors hover:border-accent/50 hover:text-ink"
+            className="mb-8 flex w-fit items-center gap-2 rounded-lg border border-line bg-void/50 px-3 py-1.5 text-[13px] text-muted backdrop-blur transition-colors hover:border-accent/50 hover:text-ink"
           >
             <svg viewBox="0 0 16 16" className="size-3.5" fill="currentColor" aria-hidden="true">
               <path d="M10.5 2.5 5 8l5.5 5.5-1.4 1.4L2.2 8 9.1 1.1z" />
