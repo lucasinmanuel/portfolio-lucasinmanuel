@@ -56,9 +56,9 @@ export const projects: Project[] = [
           'Um registry de Queue e Worker por nome, criadas sob demanda e reaproveitadas. Todo job nasce com 3 tentativas e backoff exponencial começando em 10s. Jobs concluídos são removidos para manter o Redis enxuto; jobs que falharam são preservados para inspeção — perder o job que falhou é perder a única evidência do que deu errado.',
       },
       {
-        title: 'Eleição de líder para jobs agendados',
+        title: 'Consumidor único, para os eventos serem aplicados em ordem',
         detail:
-          'Uma função runIfPrimary resolve o problema de rodar N réplicas da API: tarefas periódicas só executam na instância de índice 0. Sem isso, cada réplica dispara o mesmo job e o efeito é multiplicado pelo número de containers.',
+          'O sync processa um log ordenado: um lote pode criar o usuário e, logo em seguida, creditar o saldo dele. Se vários workers puxassem lotes em paralelo, o lote 7 poderia ser aplicado antes do 6 e o crédito cairia num usuário que ainda não existe. Só a instância de índice 0 registra o worker, com concorrência 1. O que está em jogo não é duplicação — BullMQ distribui os jobs e cada um roda uma vez só — e sim a ordem.',
       },
       {
         title: 'Cache com TTL declarado por entidade',
@@ -85,7 +85,7 @@ export const projects: Project[] = [
       'Japa',
     ],
     retrospective:
-      'A eleição de líder por índice de instância resolve a duplicação, mas cria um ponto cego: se a instância 0 cai, os jobs agendados param e ninguém fica sabendo. Jobs repetíveis do próprio BullMQ, deduplicados por chave, dispensariam a eleição manual. E o sistema não tem instrumentação — quando o sync atrasa, a descoberta vem por reclamação de usuário, não por alerta.',
+      'Amarrar "quem é o consumidor único" ao índice de processo do PM2 é frágil: se a instância 0 cai, a sincronização para por completo enquanto as outras seguem respondendo HTTP — o health check continua verde e o dado envelhece em silêncio. Um lock distribuído com lease e renovação, ou um worker em processo próprio, resolveria. Falta também instrumentação: hoje a descoberta de que o sync atrasou vem por reclamação de usuário, não por alerta.',
   },
   {
     slug: 'beautyfy',
