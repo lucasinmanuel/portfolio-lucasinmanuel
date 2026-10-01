@@ -19,6 +19,12 @@ export type Project = {
   embed?: { src: string; height: number; caption: string }
   /** Só os projetos abertos têm — o resto é código de cliente. */
   repo?: string
+  /**
+   * Autocrítica técnica. Em sistema de cliente que ainda roda, fica no nível
+   * arquitetural: descrever falha explorável de produção alheia aqui seria
+   * expor o cliente.
+   */
+  retrospective?: string
 }
 
 export const projects: Project[] = [
@@ -78,6 +84,8 @@ export const projects: Project[] = [
       'Swagger',
       'Japa',
     ],
+    retrospective:
+      'A eleição de líder por índice de instância resolve a duplicação, mas cria um ponto cego: se a instância 0 cai, os jobs agendados param e ninguém fica sabendo. Jobs repetíveis do próprio BullMQ, deduplicados por chave, dispensariam a eleição manual. E o sistema não tem instrumentação — quando o sync atrasa, a descoberta vem por reclamação de usuário, não por alerta.',
   },
   {
     slug: 'beautyfy',
@@ -145,6 +153,8 @@ export const projects: Project[] = [
       'Biome',
       'Docker',
     ],
+    retrospective:
+      'Cinco serviços se chamam por HTTP, e o contrato entre eles só existe em tempo de compilação: o pacote compartilhado tipa, mas nada valida o payload em runtime. Um deploy fora de ordem quebra em silêncio. Falta também tracing distribuído — com cinco backends, descobrir onde uma requisição morreu ainda é leitura de log em cinco lugares.',
   },
   {
     slug: 'agror7',
@@ -198,6 +208,8 @@ export const projects: Project[] = [
       'WhatsApp Cloud API',
       'Gemini',
     ],
+    retrospective:
+      'As integrações batem nas fontes externas a cada requisição, sem cache. INPE e NASA FIRMS não mudam de minuto em minuto; um Redis na frente tiraria a latência delas do caminho do usuário. O histórico de migrations também é curto demais para o tamanho do schema — parte da evolução aconteceu fora delas, e reconstruir o banco do zero virou exercício de arqueologia.',
   },
   {
     slug: 'molitor7',
@@ -253,6 +265,8 @@ export const projects: Project[] = [
       'Tailwind',
       'Vercel',
     ],
+    retrospective:
+      'A paginação entrou depois, quando a lista já doía. Carregar tudo e filtrar no cliente é uma decisão que nunca se paga — deveria ter nascido paginada. E apesar do teste por domínio no servidor, o caminho que mais importa, do webhook de pagamento até a matrícula efetivada, não tem teste de ponta a ponta. É exatamente onde uma falha custa dinheiro.',
   },
   {
     slug: 'atom-v7',
@@ -309,6 +323,8 @@ export const projects: Project[] = [
       'Cloudflare for SaaS',
       'pnpm',
     ],
+    retrospective:
+      'O Compose deixa o ambiente local impecável, mas não existe equivalente para produção: a configuração que roda de verdade diverge da que todo mundo testa. E o indexador não expõe medida de atraso — se ele ficar para trás da cadeia, a aplicação passa a servir dado velho sem nenhum sinal de que está fazendo isso.',
   },
   {
     slug: 'alquimia-das-palavras',
@@ -348,11 +364,6 @@ export const projects: Project[] = [
         detail:
           'Fui líder de uma squad de cinco pessoas com níveis muito diferentes de experiência, e 86 dos 91 commits são meus. Isso diz as duas coisas ao mesmo tempo: eu puxei o projeto, e eu não soube distribuir o trabalho. Foi o que me ensinou que entregar sozinho não é o mesmo que liderar.',
       },
-      {
-        title: 'O que eu faria diferente hoje',
-        detail:
-          'O CSRF está desabilitado e não há camada de teste além do scaffold. Em 2022 eu não sabia o que estava abrindo mão; hoje é a primeira coisa que eu olharia numa revisão. Deixo o repositório aberto justamente por isso — dá para comparar com o que eu escrevo agora.',
-      },
     ],
     stack: [
       'Java',
@@ -364,6 +375,8 @@ export const projects: Project[] = [
       'JavaScript',
       'Maven',
     ],
+    retrospective:
+      'O CSRF está desabilitado e não há camada de teste além do scaffold. Em 2022 eu não sabia o que estava abrindo mão; hoje é a primeira coisa que eu olharia numa revisão. Deixo o repositório aberto justamente por isso — dá para comparar com o que eu escrevo agora.',
   },
 ]
 

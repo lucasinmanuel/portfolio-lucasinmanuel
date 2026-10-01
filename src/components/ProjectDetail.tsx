@@ -112,6 +112,20 @@ export function ProjectDetail({
               </li>
             ))}
           </ul>
+
+          {project.retrospective && (
+            <section className="mt-12">
+              <h2 className="mb-4 font-mono text-[11px] tracking-[0.18em] text-dim uppercase">
+                O que eu faria diferente hoje
+              </h2>
+              <p
+                className="border-l-2 py-1 pl-5 text-[14px] leading-relaxed text-muted"
+                style={{ borderColor: `hsl(${project.hue} 55% 42%)` }}
+              >
+                {project.retrospective}
+              </p>
+            </section>
+          )}
         </div>
 
         <aside className="lg:sticky lg:top-8 lg:self-start">
