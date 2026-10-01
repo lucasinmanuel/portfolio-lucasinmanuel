@@ -74,7 +74,7 @@ function ProjectCard({ project, onOpen }: { project: Project; onOpen: (slug: str
       <Cover
         hue={project.hue}
         monogram={project.monogram}
-        className="aspect-[16/9] w-full transition-transform duration-500 group-hover:scale-[1.03]"
+        className="aspect-video w-full transition-transform duration-500 group-hover:scale-[1.03]"
       />
       <div className="flex flex-1 flex-col p-4">
         <div className="flex items-start justify-between gap-3">
@@ -83,6 +83,11 @@ function ProjectCard({ project, onOpen }: { project: Project; onOpen: (slug: str
         </div>
         <p className="mt-1.5 flex-1 text-[13px] leading-relaxed text-muted">{project.subtitle}</p>
         <div className="mt-4 flex flex-wrap gap-1.5">
+          {project.repo && (
+            <span className="rounded border border-accent/40 bg-accent/10 px-1.5 py-0.5 font-mono text-[10px] text-accent-soft">
+              código aberto
+            </span>
+          )}
           {project.stack.slice(0, 4).map((s) => (
             <span
               key={s}

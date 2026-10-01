@@ -17,6 +17,8 @@ export type Project = {
   featured?: boolean
   /** Prova visual do produto, para os casos em que existe algo público. */
   embed?: { src: string; height: number; caption: string }
+  /** Só os projetos abertos têm — o resto é código de cliente. */
+  repo?: string
 }
 
 export const projects: Project[] = [
@@ -306,6 +308,61 @@ export const projects: Project[] = [
       'Solidity',
       'Cloudflare for SaaS',
       'pnpm',
+    ],
+  },
+  {
+    slug: 'alquimia-das-palavras',
+    title: 'Alquimia das Palavras',
+    subtitle: 'Jogo de leitura para crianças com dislexia — Java e Spring',
+    client: 'Recode Pro 2022',
+    role: 'Líder de squad e full-stack',
+    period: '2022 — 2023',
+    status: 'Entregue',
+    commits: 86,
+    share: '86 dos 91 commits, numa squad de 5',
+    hue: 48,
+    monogram: 'AP',
+    repo: 'https://github.com/lucasinmanuel/alquimia-das-palavras',
+    summary:
+      'Projeto de formação, e o único aqui com o código aberto. Um jogo de alquimia em que progredir exige ler: o jogador atende clientes, interpreta o pedido e combina ingredientes para produzir a poção certa. Fui líder da squad de cinco pessoas.',
+    architecture: [
+      'Spring Boot com Spring Security, Spring Data JPA e Thymeleaf, sobre MySQL.',
+      'Autenticação por formulário com BCrypt, papéis por usuário e a área administrativa restrita a ADMIN.',
+      'Banco modelado antes do código: os modelos conceitual e lógico estão versionados no repositório junto do script de criação.',
+      'O jogo é JavaScript sem framework, dividido em módulos por responsabilidade: cenário, caldeirão, armazém, grimório, painel de moedas e controlador de fases.',
+      'Diálogos organizados por dia e por NPC, cada fala com seu arquivo de áudio correspondente.',
+    ],
+    achievements: [
+      {
+        title: 'Acessibilidade como requisito, não como enfeite',
+        detail:
+          'A fonte OpenDyslexic é aplicada no site e no jogo inteiro, e cada fala de NPC tem narração em áudio. A escolha do público veio de dado, não de palpite: a Associação Brasileira de Dislexia aponta a dislexia como o distúrbio de maior incidência em sala de aula, atingindo de 5% a 17% da população. Quem não consegue ler o diálogo ainda consegue jogar.',
+      },
+      {
+        title: 'Sistema de save com slots e estado serializado',
+        detail:
+          'A entidade GameSave guarda dia, NPC atual e as três moedas em colunas próprias, e o inventário e as receitas em campos @Lob. O que é consultável vira coluna; o que só precisa voltar inteiro vira blob. Cada save pertence a um usuário por chave estrangeira e ocupa um slot.',
+      },
+      {
+        title: 'Liderar antes de saber liderar',
+        detail:
+          'Fui líder de uma squad de cinco pessoas com níveis muito diferentes de experiência, e 86 dos 91 commits são meus. Isso diz as duas coisas ao mesmo tempo: eu puxei o projeto, e eu não soube distribuir o trabalho. Foi o que me ensinou que entregar sozinho não é o mesmo que liderar.',
+      },
+      {
+        title: 'O que eu faria diferente hoje',
+        detail:
+          'O CSRF está desabilitado e não há camada de teste além do scaffold. Em 2022 eu não sabia o que estava abrindo mão; hoje é a primeira coisa que eu olharia numa revisão. Deixo o repositório aberto justamente por isso — dá para comparar com o que eu escrevo agora.',
+      },
+    ],
+    stack: [
+      'Java',
+      'Spring Boot',
+      'Spring Security',
+      'Spring Data JPA',
+      'Thymeleaf',
+      'MySQL',
+      'JavaScript',
+      'Maven',
     ],
   },
 ]
