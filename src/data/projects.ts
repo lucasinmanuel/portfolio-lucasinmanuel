@@ -90,7 +90,7 @@ export const projects: Project[] = [
   {
     slug: 'beautyfy',
     title: 'Beautyfy',
-    subtitle: 'Marketplace de beleza — cinco backends, app nativo e painel',
+    subtitle: 'Marketplace de beleza — cinco backends e dois apps nas lojas',
     client: 'Beauty Professionals Now',
     role: 'Backend e mobile',
     period: 'jul/2025 — set/2026',
@@ -111,7 +111,8 @@ export const projects: Project[] = [
       'Turborepo e Bun. Cinco backends separados por domínio: backoffice, client, professional, chat e notification.',
       'Um pacote compartilhado reúne os módulos que os cinco consomem — o contrato entre serviços vive em código tipado, não em convenção.',
       'Um pacote gerador de env monta a configuração de cada serviço, de modo que cinco ambientes não divergem em silêncio.',
-      'Apps Expo e React Native com Tamagui para cliente e profissional, Next.js no backoffice.',
+      'Dois apps Expo e React Native com Tamagui, um para cliente e outro para profissional, publicados na App Store e no Google Play; Next.js no backoffice e nas versões web.',
+      'Camada de analytics compartilhada entre web e mobile, despachando o mesmo evento para três provedores com a nomenclatura de cada um.',
       'Build standalone por backend, imagens Docker e ambiente de infra versionado.',
     ],
     achievements: [
@@ -135,6 +136,16 @@ export const projects: Project[] = [
         detail:
           'Stripe para cobrança, com modelagem de disponibilidade e agendamento: janelas, conflitos e cancelamento. É a parte do domínio onde regra de negócio errada vira prejuízo direto do profissional.',
       },
+      {
+        title: 'Vinte eventos, três provedores, um vocabulário só',
+        detail:
+          'O funil inteiro instrumentado, de screen_view até purchase, enviado para Firebase Analytics, AppsFlyer e Meta Pixel — cada um com nomenclatura própria. Mantive a tabela de equivalência documentada, porque três nomes para o mesmo evento é exatamente onde o dado começa a divergir entre as ferramentas e ninguém sabe qual número está certo. O purchase é deduplicado por transaction_id: sem isso, uma retentativa de pagamento vira duas vendas no relatório e a verba de mídia é decidida em cima de número inflado.',
+      },
+      {
+        title: 'Dois apps, duas lojas, build reproduzível',
+        detail:
+          'Beautyfy Cliente e Beautyfy Profissional, cada um publicado na App Store e no Google Play — quatro listagens para manter. O pipeline é EAS Build com dois perfis: desenvolvimento gera APK de distribuição interna, produção gera app bundle com incremento automático de versão. Mais de quarenta builds de Android entregues. Precisei escrever um config plugin próprio do Expo para o Firebase subir no iOS, que exige static frameworks no prebuild — e bloqueei a permissão de AD_ID no Android, porque o app mede conversão sem precisar do identificador de publicidade.',
+      },
     ],
     stack: [
       'TypeScript',
@@ -147,8 +158,13 @@ export const projects: Project[] = [
       'Turborepo',
       'Bun',
       'React Native',
+      'Expo',
+      'EAS Build',
       'Tamagui',
       'Next.js',
+      'Firebase Analytics',
+      'AppsFlyer',
+      'Meta Pixel',
       'Vitest',
       'Biome',
       'Docker',
