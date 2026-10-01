@@ -5,3 +5,6 @@ dist
 .vscode/*
 !.vscode/extensions.json
 *.tsbuildinfo
+
+# Currículo: tem telefone e endereço — não vai para repo público
+public/*.pdf
