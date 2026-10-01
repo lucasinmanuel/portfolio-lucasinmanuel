@@ -50,6 +50,25 @@ export function ProjectDetail({
         <div className="min-w-0">
           <p className="text-[17px] leading-relaxed text-ink/90">{project.summary}</p>
 
+          {project.embed && (
+            <section className="mt-10">
+              <h2 className="mb-4 font-mono text-[11px] tracking-[0.18em] text-dim uppercase">
+                O produto
+              </h2>
+              <div className="w-full max-w-[504px] overflow-hidden rounded-xl border border-line bg-panel">
+                <iframe
+                  src={project.embed.src}
+                  height={project.embed.height}
+                  title={`${project.title} — ${project.embed.caption}`}
+                  loading="lazy"
+                  allowFullScreen
+                  className="block w-full"
+                />
+              </div>
+              <p className="mt-2.5 text-[12.5px] text-dim">{project.embed.caption}</p>
+            </section>
+          )}
+
           <h2 className="mt-12 mb-5 flex items-center gap-2.5 font-mono text-[11px] tracking-[0.18em] text-dim uppercase">
             <TrophyIcon />
             Problemas resolvidos

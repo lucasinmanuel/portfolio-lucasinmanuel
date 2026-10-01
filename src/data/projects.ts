@@ -15,6 +15,8 @@ export type Project = {
   achievements: { title: string; detail: string }[]
   stack: string[]
   featured?: boolean
+  /** Prova visual do produto, para os casos em que existe algo público. */
+  embed?: { src: string; height: number; caption: string }
 }
 
 export const projects: Project[] = [
@@ -90,6 +92,11 @@ export const projects: Project[] = [
     featured: true,
     summary:
       'Monorepo que sustenta o produto inteiro: cinco backends AdonisJS independentes, app React Native e painéis Next.js. Meu maior volume de trabalho — quinze meses, ainda em evolução.',
+    embed: {
+      src: 'https://www.linkedin.com/embed/feed/update/urn:li:share:7437659543217651712?collapsed=1',
+      height: 670,
+      caption: 'Publicação de lançamento, com telas do app em produção.',
+    },
     architecture: [
       'Turborepo e Bun. Cinco backends separados por domínio: backoffice, client, professional, chat e notification.',
       'Um pacote compartilhado reúne os módulos que os cinco consomem — o contrato entre serviços vive em código tipado, não em convenção.',
