@@ -19,16 +19,16 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    slug: 'defi-platform-api',
-    title: 'Conecta · WebDEX · DeltaLoop',
-    subtitle: 'API de plataforma DeFi — cache, filas e sincronização contínua',
+    slug: 'plataformas-arbitragem',
+    title: 'Plataformas de arbitragem',
+    subtitle: 'Três APIs irmãs — cache, filas e sincronização contínua',
     client: 'Atom Smart Chains',
     role: 'Backend',
     period: '2025 — 2026',
     status: 'Em produção',
     commits: 33,
     hue: 258,
-    monogram: 'CW',
+    monogram: 'AR',
     featured: true,
     summary:
       'Três APIs irmãs sobre a mesma base, servindo white-labels diferentes do mesmo protocolo. O trabalho central não é o CRUD — é manter o banco em dia com um estado externo que muda sozinho, sem derrubar a latência das leituras nem duplicar efeito quando a API roda com várias réplicas.',
