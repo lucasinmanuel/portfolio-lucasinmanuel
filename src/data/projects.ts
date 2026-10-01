@@ -309,7 +309,8 @@ export const profile = {
   title: 'Engenheiro Backend',
   location: 'Brasil · UTC−3',
   github: 'https://github.com/lucasinmanuel',
-  email: 'CONFIRMAR@email.com',
+  linkedin: 'https://www.linkedin.com/in/lucasinmanuel/',
+  email: 'lucasemanuel2077@gmail.com',
   bio: [
     'Trabalho com TypeScript e Node em APIs que ficam de pé em produção, não em protótipo. A maior parte do que construí é código fechado de cliente, então este portfólio mostra as decisões: o que o problema exigia, o que eu escolhi e do que eu abri mão.',
     'O que mais se repete no meu trabalho é manter um banco em dia com uma fonte externa que muda sozinha, sem deixar a leitura lenta: fila com retry, cache com invalidação declarada e sincronização em transação.',

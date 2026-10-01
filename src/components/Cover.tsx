@@ -41,7 +41,7 @@ export function Cover({ hue, monogram, className = '', size = 'card' }: CoverPro
             hsl(${hue} 95% 68% / 0.38) 0%, transparent 60%)`,
         }}
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-void/75 via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-linear-to-t from-void/75 via-transparent to-transparent" />
       <span
         className={`absolute right-[-0.08em] bottom-[-0.28em] font-mono font-bold ${type} leading-none tracking-tighter select-none`}
         style={{ color: `hsl(${hue} 90% 85% / 0.14)` }}

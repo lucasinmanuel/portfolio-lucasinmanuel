@@ -6,7 +6,7 @@ export function Profile() {
   return (
     <div className="rise mx-auto w-full max-w-[860px] px-4 py-10 sm:px-8 sm:py-14">
       <div className="flex flex-wrap items-center gap-5">
-        <div className="grid size-16 shrink-0 place-items-center rounded-2xl bg-gradient-to-br from-accent to-[#4c2fd6] font-mono text-xl font-bold text-white">
+        <div className="grid size-16 shrink-0 place-items-center rounded-2xl bg-linear-to-br from-accent to-[#4c2fd6] font-mono text-xl font-bold text-white">
           LS
         </div>
         <div>
@@ -73,6 +73,14 @@ export function Profile() {
             className="rounded-lg border border-line px-5 py-2.5 text-sm text-muted transition-colors hover:border-accent/50 hover:text-ink"
           >
             github.com/{profile.handle}
+          </a>
+          <a
+            href={profile.linkedin}
+            target="_blank"
+            rel="noreferrer"
+            className="rounded-lg border border-line px-5 py-2.5 text-sm text-muted transition-colors hover:border-accent/50 hover:text-ink"
+          >
+            linkedin.com/in/{profile.handle}
           </a>
         </div>
       </section>

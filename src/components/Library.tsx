@@ -42,7 +42,7 @@ function HeroCard({ project, onOpen }: { project: Project; onOpen: (slug: string
         size="hero"
         className="absolute inset-0"
       />
-      <div className="absolute inset-0 bg-gradient-to-r from-void/92 via-void/70 to-transparent" />
+      <div className="absolute inset-0 bg-linear-to-r from-void/92 via-void/70 to-transparent" />
       <div className="relative flex flex-col justify-end p-6 sm:min-h-[310px] sm:p-9">
         <StatusPill status={project.status} />
         <h2 className="mt-3 max-w-[18ch] text-2xl leading-tight font-bold sm:text-[32px]">

@@ -67,7 +67,7 @@ function MobileBar({ route, onGo }: { route: Route; onGo: (hash: string) => void
         onClick={() => onGo('/')}
         className="flex items-center gap-2.5 text-[13px] font-semibold"
       >
-        <span className="grid size-7 place-items-center rounded-md bg-gradient-to-br from-accent to-[#4c2fd6] font-mono text-[10px] font-bold text-white">
+        <span className="grid size-7 place-items-center rounded-md bg-linear-to-br from-accent to-[#4c2fd6] font-mono text-[10px] font-bold text-white">
           LS
         </span>
         Lucas Emanuel

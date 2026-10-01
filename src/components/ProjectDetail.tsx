@@ -18,7 +18,7 @@ export function ProjectDetail({
           size="hero"
           className="absolute inset-0"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-void via-void/65 to-void/25" />
+        <div className="absolute inset-0 bg-linear-to-t from-void via-void/65 to-void/25" />
         <div className="relative px-4 pt-6 pb-8 sm:px-10 sm:pt-8 sm:pb-10">
           <button
             onClick={onBack}

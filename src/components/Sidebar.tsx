@@ -19,7 +19,7 @@ export function Sidebar({ view, activeSlug, onNavigate, onOpen }: SidebarProps) 
   return (
     <aside className="flex w-[264px] shrink-0 flex-col border-r border-line bg-panel max-lg:hidden">
       <div className="flex items-center gap-3 border-b border-line-soft px-5 py-5">
-        <div className="grid size-10 shrink-0 place-items-center rounded-lg bg-gradient-to-br from-accent to-[#4c2fd6] font-mono text-sm font-bold text-white">
+        <div className="grid size-10 shrink-0 place-items-center rounded-lg bg-linear-to-br from-accent to-[#4c2fd6] font-mono text-sm font-bold text-white">
           LS
         </div>
         <div className="min-w-0">
@@ -83,7 +83,7 @@ export function Sidebar({ view, activeSlug, onNavigate, onOpen }: SidebarProps) 
         </ul>
       </div>
 
-      <div className="border-t border-line-soft p-3">
+      <div className="flex flex-col gap-0.5 border-t border-line-soft p-3">
         <a
           href={profile.github}
           target="_blank"
@@ -92,6 +92,15 @@ export function Sidebar({ view, activeSlug, onNavigate, onOpen }: SidebarProps) 
         >
           <GithubIcon />
           github.com/{profile.handle}
+        </a>
+        <a
+          href={profile.linkedin}
+          target="_blank"
+          rel="noreferrer"
+          className="flex items-center gap-3 rounded-lg px-2 py-2 text-[13px] text-muted transition-colors hover:bg-raised hover:text-ink"
+        >
+          <LinkedinIcon />
+          linkedin.com/in/{profile.handle}
         </a>
       </div>
     </aside>
@@ -139,6 +148,14 @@ function UserIcon() {
     <svg viewBox="0 0 16 16" className="size-4 shrink-0" fill="currentColor" aria-hidden="true">
       <circle cx="8" cy="5" r="3" />
       <path d="M2 14.5c0-3 2.7-4.5 6-4.5s6 1.5 6 4.5z" />
+    </svg>
+  )
+}
+
+function LinkedinIcon() {
+  return (
+    <svg viewBox="0 0 16 16" className="size-4 shrink-0" fill="currentColor" aria-hidden="true">
+      <path d="M13.63 0H2.37A2.35 2.35 0 0 0 0 2.32v11.36A2.35 2.35 0 0 0 2.37 16h11.26A2.35 2.35 0 0 0 16 13.68V2.32A2.35 2.35 0 0 0 13.63 0M4.94 13.64H2.92V6.14h2.02zM3.93 5.12a1.18 1.18 0 1 1 0-2.36 1.18 1.18 0 0 1 0 2.36m9.73 8.52h-2.02V9.5c0-1.02-.02-2.33-1.42-2.33s-1.64 1.11-1.64 2.26v4.21H6.56V6.14h1.94v1.02h.03a2.13 2.13 0 0 1 1.91-1.05c2.05 0 2.43 1.35 2.43 3.1z" />
     </svg>
   )
 }
